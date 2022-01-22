@@ -31,6 +31,7 @@
       }
         body {
             background-image: url(/images_student/penpaper.jpg);
+            background-position: right;
             background-size: 100%;
             background-repeat: no-repeat;
         margin: 5px;
@@ -43,6 +44,77 @@
             padding-top: 8px;
             width: 25%;
         }
+        select,input{
+        padding: 7px 7px 7px 7px;
+        border-radius: 4px;
+        background-color: rgb(241, 237, 236);
+        border-color: black;
+        border-width: 1px;
+      }
+      input:hover{
+        background-color: rgb(220, 220, 222);
+      }
+      input:active{
+          background-color: rgb(175, 170, 170);
+      }
+      
+
+      #submit{
+		background: rgb(243, 4, 4);
+        border: 1px solid rgba(110, 3, 3, 0.1);
+        padding: 7px 81px 7px 81px;
+        font-size: 20px;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-top: 10px;
+        color: whitesmoke;
+        -webkit-box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+	  }
+	  #submit:hover{
+		  background-color: rgb(226, 45, 45);
+	  }
+	  #submit:active{
+		background-color: rgb(228, 53, 53);
+	  }
+	  @media screen and (max-width: 600px) {
+		  body{
+			  padding: 0px;
+			  margin: 0px;
+			  background-color: white;
+			  background-image: none;
+			  font-size: smaller;
+		  }
+		  .mnu{
+			  text-align: left;
+			  display: flex;
+		  }
+		  img{
+			  width: 50px;
+		  }
+		  section{
+			  float: left;
+			  display: inline;
+		  }
+		  input{
+			  size: 15;
+		  }
+		  form{
+			  text-align: left;
+		  }
+		  
+	  }
+      header{
+		  float: left;
+		  width: 50px;
+	  }
+	  img{
+		  width: 200px;
+		  /* display: flex; */
+		 /* padding-left: 645px;  */
+	  }
     </style>
   </head>
   <body>
@@ -64,41 +136,34 @@
       <section>
         <div class="register-pane">
             <div>
-                <p style="font-size:larger; padding: 4px; border-radius: 3px; background-color: rgb(241, 180, 180);">Enter following details to register complaint.</p>
+                <p style="font-size:larger; padding: 4px; border-radius: 3px;">Register your complaint here</p>
             </div>
             <div>
                 <form action="" method="post">
                     <div class="iform">
-                    <div style="padding-top:10px; display:block;">
-                        <label for="">Complaint ID</label></br>
-                    <input type="complaint_id" placeholder="Enter complaint id" autofocus size="27"></br>
-                    <p style="font-size: smaller;">* Ex: AB001 (AB is initial 2 characters of abuse type.) </p>
-                    </div>
-            
-                    <div style="padding-top:15px">
-                        <label for="">USN</label></br>
-                    <input type="usn" placeholder="Enter your usn" size="27"></br>
+                    
+                    <div style="padding-top:4px">
+                        <label for="">Abuser USN/Name</label></br>
+                    <input type="abuser_usn" placeholder="Enter abuser usn/ name" size="27"></br>
                     </div>
             <br>
-                    <div style="padding-top:15px">
-                        <label for="">Abuser USN</label></br>
-                    <input type="abuser_usn" placeholder="Enter abuser usn" size="27"></br>
-                    </div>
-            <br>
-                    <div style="padding-top:15px">
+                    <div style="padding-top:5px">
                         <label for="">Abuse Type</label></br>
-                    <input type="abuse_type" placeholder="Enter abuse type" size="27"></br>
+                    <!-- <input type="abuse_type" placeholder="Enter abuse type" size="27"></br> -->
+                    <select name="abuse_type" id="">
+                      <option value="">select type..</option>
+                      <option value="drug abuse">Drug abuse</option>
+                      <option value="emotional abuse">Emotional abuse</option>
+                      <option value="financil abuse">Financial abuse</option>
+                      <option value="mental abuse">Mental abuse</option>
+                      <option value="harassment">Harassment</option>
+                      <option value="physical abuse">Physical abuse</option>
+                      <option value="sexual abuse">Sexual abuse</option>
+                      <option value="other">Other</option>
+                    </select>
                     </div>
             <br>
-                    <div style="padding-top:15px">
-                        <label for="">Complaint Date</label></br>
-                    <input type="complaint_date" placeholder="Enter complaint date" size="27"></br>
-                    </div>
-                </br>
-                   <br>
-                    <div class="submit" style="text-align:left;">
-                        <input type="submit" value="Register" style="padding: 12px 12px 12px 12px; border-radius:10px; background: rgb(235, 14, 32); color: whitesmoke; width: 100px; height: 60px;  font-family: Open Sans, sans-serif; font-weight: bold; " >
-                    </div>
+                   <input type="submit" value="Register" id="submit">
                 </div>
                     
                 </form>
