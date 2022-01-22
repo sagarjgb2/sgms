@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JSSATE SCMS</title>
+    <title>JSSATE SGMS</title>
     <div class="mnu">
       <a href="index.html" style="text-decoration: none">Home</a>
       <a href="login.html" style="text-decoration: none">Login</a>
@@ -15,7 +15,7 @@
         background-image: url(/images_student/penpaper.jpg);
         background-color: whitesmoke;
         background-repeat: no-repeat;
-        background-position: center;
+        background-position: right;
         color: rgb(29, 28, 28);
         background-size: 100%;
       }
@@ -64,20 +64,25 @@
         font-weight: bold;
         font-size: 15px;
       }
+      header {
+        float: left;
+        width: 50px;
+        display: flex;
+      }
     </style>
   </head>
   <body>
+    <header>
+      <img
+        src="/images_student/jssate.png"
+        alt="jss logo"
+        style="width: 200px"
+      />
+    </header>
     <main>
       <section>
         <div>
-          <h1>
-            <img
-              src="/images_student/jsslogo-removebg.png"
-              alt="JSS logo"
-              width="90px"
-            />
-            Welcome to JSSATE Student Counselling Management System (SCMS)
-          </h1>
+          <h1>Welcome to JSSATE Student Grievance Management System (SCMS)</h1>
         </div>
         <div>
           <dl>
@@ -86,9 +91,9 @@
               <p>
                 "
                 <strong
-                  >JSSATEB Student Counselling Management System (SCMS)</strong
+                  >JSSATEB Student Grievance Management System (SCMS)</strong
                 >is a computerized solution to avoid the various type of abuse
-                faced by student in college. SCMS helps students to register
+                faced by student in college. SGMS helps students to register
                 complaint online and mentored by the counsellor regarding the
                 various problem faced by the student as soon as possible. Here
                 counsellor takes required action against the complaint
@@ -117,7 +122,11 @@
         <p>
           <a
             href="mailto:counsellor@jssateb.ac.in"
-            style="text-decoration: none; color: rgb(5, 34, 15); font-weight: bolder"
+            style="
+              text-decoration: none;
+              color: rgb(5, 34, 15);
+              font-weight: bolder;
+            "
             >You can contact us here. . ....</a
           >
         </p>

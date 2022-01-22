@@ -10,14 +10,6 @@
         <a href="login.html" style="text-decoration:none; padding: 12px 12px 12px 12px; color: rgb(15, 4, 77);">Logout</a>
     </div>
     <style>
-      input{
-        padding: 7px 7px 7px 7px;
-        border-radius: 4px;
-        background-color: rgb(241, 237, 236);
-      }
-      input:hover{
-        background-color: rgb(220, 220, 222);
-      }
         .mnu{
             text-decoration: none;
             text-align:right;
@@ -42,15 +34,17 @@
         .register-pane{
             float: right;
             padding-top: 8px;
-            width: 25%;
+            width: 18%;
         }
         select,input{
-        padding: 7px 7px 7px 7px;
+        padding: 9px 9px 9px 9px;
         border-radius: 4px;
         background-color: rgb(241, 237, 236);
         border-color: black;
         border-width: 1px;
       }
+
+    
       input:hover{
         background-color: rgb(220, 220, 222);
       }
@@ -115,44 +109,44 @@
 		  /* display: flex; */
 		 /* padding-left: 645px;  */
 	  }
+    form{
+      background-color: rgb(111, 178, 199);
+      padding: 20px 20px 20px 20px;
+      border-radius: 3px;
+    }
     </style>
   </head>
   <body>
     <main>
+      <header>
+        <img src="/images_student/jssate.png" alt="jss logo">
+      </header>
       <section>
         <div style="float: left;">
-          <h1>Profile</h1>
-          <h2>
-            Welcome
-            
-          </h2>
-          <div>
-            <h2>
-              Complaints registered by 
-            </h2>
-          </div>
+          <h1>Welcome</h1>
         </div>
       </section>
       <section>
         <div class="register-pane">
             <div>
-                <p style="font-size:larger; padding: 4px; border-radius: 3px;">Register your complaint here</p>
+                <p style="font-size:larger; padding: 4px; padding-bottom: 5px; border-radius: 3px; background-color: rgb(243, 4, 4); color: white; border-radius: 3px;">Register your complaint here</p>
             </div>
             <div>
                 <form action="" method="post">
                     <div class="iform">
                     
                     <div style="padding-top:4px">
-                        <label for="">Abuser USN/Name</label></br>
-                    <input type="abuser_usn" placeholder="Enter abuser usn/ name" size="27"></br>
+                        <label for="">Abuser USN</label></br>
+                    <input type="abuser_usn" placeholder="Enter abuser usn" size="27"></br>
                     </div>
             <br>
                     <div style="padding-top:5px">
                         <label for="">Abuse Type</label></br>
                     <!-- <input type="abuse_type" placeholder="Enter abuse type" size="27"></br> -->
-                    <select name="abuse_type" id="">
+                    <select name="abuse_type" id="" style="padding-right: 95px;">
                       <option value="">select type..</option>
                       <option value="drug abuse">Drug abuse</option>
+                      <option value="discrimination">Discrimination</option>
                       <option value="emotional abuse">Emotional abuse</option>
                       <option value="financil abuse">Financial abuse</option>
                       <option value="mental abuse">Mental abuse</option>
