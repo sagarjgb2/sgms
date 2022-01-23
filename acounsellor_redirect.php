@@ -179,7 +179,7 @@ $conn->close();
         }
     ?>
                     <label for="">Counsellor ID</label></br>
-                <input type="counsellor_id" name="counsellor_id" placeholder="Enter student usn" autofocus size="27"></br>
+                <input type="counsellor_id" name="counsellor_id" placeholder="Enter student usn" required autofocus size="27"></br>
                 </div>
         
                 <div style="padding-top:15px">
@@ -203,7 +203,7 @@ $conn->close();
         
                 <div style="padding-top:15px">
                     <label for="">Email</label></br>
-                <input type="email" name="email" placeholder="Enter student current year" size="27"></br>
+                <input type="email" name="email" required placeholder="Enter student current year" size="27"></br>
                 </div>
             
                 <div style="padding-top:15px">
