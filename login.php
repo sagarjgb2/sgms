@@ -7,14 +7,14 @@ if(isset($_POST['username'])){
 session_start();
 $_SESSION['username']=$_POST['username'];
     if($password=='admin'){
-      header('Location: http://' . $_SERVER['HTTP_HOST'] . '/code/min_scms/admin.php', true, 303);
+      header('Location: http://' . $_SERVER['HTTP_HOST'] . '/code/gittest/admin.php', true, 303);
       
     }
     else if($password=='coun1'){
-      header('Location: http://' . $_SERVER['HTTP_HOST'] . '/code/min_scms/counsellor_profile.php', true, 303);
+      header('Location: http://' . $_SERVER['HTTP_HOST'] . '/code/gittest/counsellor_profile.php', true, 303);
     }
     else if($password=='std1'){
-      header('Location: http://' . $_SERVER['HTTP_HOST'] . '/code/min_scms/student_profile.php', true, 303);
+      header('Location: http://' . $_SERVER['HTTP_HOST'] . '/code/gittest/student_profile.php', true, 303);
     }
       
     else{

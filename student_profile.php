@@ -1,14 +1,16 @@
 <?php
+include('connection.php');
 $insert = false;
 session_start();
 if(isset($_POST['abuser_id'])){
 include('connection.php');
 //collect post variable
+$uname=$_SESSION["username"];
 $abuser_id = $_POST['abuser_id'];
 $abuse_type = $_POST['abuse_type'];
 // $complaint_date = $_POST['complaint_date'];
 $sql = "INSERT INTO `complaint` (`complaint _id`, `usn`, `abuser_id`, `abuse_type`, `complaint_date`) VALUES ('$complaint_id', '$usn', '$abuser_id', '$abuse_type', CURDATE() );";
-// $username = "select usn from";
+
 
 // Execute the query
  if($conn->query($sql) == true){
@@ -53,7 +55,7 @@ $conn->close();
           border-radius: 7px;
       }
         body {
-            background-image: url(/images_student/penpaper.jpg);
+            background-image: url(images_student/penpaper.jpg);
             background-position: right;
             background-size: 100%;
             background-repeat: no-repeat;
@@ -159,7 +161,41 @@ $conn->close();
       </header>
       <section>
         <div style="float: left;">
-          <h1>Welcome <?php $_SESSION['username'] ?></h1>
+          <h1 style="padding-top: 60px;">Welcome <?php echo $_SESSION['username']; ?>!! </h1>
+          <!-- <table style="width: 100%;">
+    <tr>
+    <th>NAME</th>
+    <th>AGE</th>
+    <th>YEAR</th>
+    <th>DEPARTMENT</th>
+    <th>PHONE NO.</th>
+  </tr> -->
+  <?php
+$sql2="SELECT name, gender, age, year, department, phno from student where usn='".$_SESSION['username']."'";
+$result1 =$conn-> query($sql2);
+
+if($result1-> num_rows>0){
+    while($row = $result1-> fetch_assoc()){
+        // echo "<tr><td>". $row["name"]. "</td><td>". $row["gender"] . "</td><td>" . $row["age"] . "</td><td>" . $row["year"] . "</td><td>" . $row["department"] . "</td><td>" . $row["phno"] . "</td></tr>";
+      echo "NAME:" .$row["name"]; 
+      echo "<br>";
+      echo "GENDER :" .$row['gender']; 
+      echo "<br>";
+      echo "AGE    :" .$row['age']; 
+      echo "<br>";
+      echo "YEAR   :" .$row['year']; 
+      echo "<br>";
+      echo "DEPT   :" .$row['department'];
+      echo "<br>"; 
+      echo "PHNO   :" .$row['phno']; 
+      }
+    echo "</table>";
+}
+else{
+    echo "No data found";
+}
+  ?>
+    <!-- </table> -->
         </div>
       </section>
       <section>
