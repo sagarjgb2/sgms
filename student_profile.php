@@ -1,0 +1,206 @@
+<?php
+$insert = false;
+session_start();
+if(isset($_POST['abuser_id'])){
+include('connection.php');
+//collect post variable
+$abuser_id = $_POST['abuser_id'];
+$abuse_type = $_POST['abuse_type'];
+// $complaint_date = $_POST['complaint_date'];
+$sql = "INSERT INTO `complaint` (`complaint _id`, `usn`, `abuser_id`, `abuse_type`, `complaint_date`) VALUES ('$complaint_id', '$usn', '$abuser_id', '$abuse_type', CURDATE() );";
+// $username = "select usn from";
+
+// Execute the query
+ if($conn->query($sql) == true){
+    // echo "Successfully inserted";
+
+    // Flag for successful insertion
+    $insert = true;
+}
+else{
+    echo "ERROR: $sql <br> $conn->error";
+}
+
+// Close the database connection
+$conn->close();
+
+}
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Profile</title>
+    <div class="mnu">
+        <a href="index.php" style="text-decoration:none; padding: 12px 12px 12px 12px; color: rgb(15, 4, 77)">Home</a>
+        <a href="login.php" style="text-decoration:none; padding: 12px 12px 12px 12px; color: rgb(15, 4, 77);">Logout</a>
+    </div>
+    <style>
+        .mnu{
+            text-decoration: none;
+            text-align:right;
+            padding-right: 20px;
+            padding-top: 20px;
+        }
+        a:hover{
+          background-color: rgb(220, 220, 222);
+          opacity: 100%;
+          border-radius: 7px;
+      }
+        body {
+            background-image: url(/images_student/penpaper.jpg);
+            background-position: right;
+            background-size: 100%;
+            background-repeat: no-repeat;
+        margin: 5px;
+        font-family: "Open Sans", sans-serif;
+        background-color: rgb(82, 81, 81);
+        color: rgb(15, 4, 77);
+      }
+        .register-pane{
+            float: right;
+            padding-top: 8px;
+            width: 18%;
+        }
+        select,input{
+        padding: 9px 9px 9px 9px;
+        border-radius: 4px;
+        background-color: rgb(241, 237, 236);
+        border-color: black;
+        border-width: 1px;
+      }
+
+    
+      input:hover{
+        background-color: rgb(220, 220, 222);
+      }
+      input:active{
+          background-color: rgb(175, 170, 170);
+      }
+      
+
+      #submit{
+		background: rgb(243, 4, 4);
+        border: 1px solid rgba(110, 3, 3, 0.1);
+        padding: 7px 81px 7px 81px;
+        font-size: 20px;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-top: 10px;
+        color: whitesmoke;
+        -webkit-box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+	  }
+	  #submit:hover{
+		  background-color: rgb(226, 45, 45);
+	  }
+	  #submit:active{
+		background-color: rgb(228, 53, 53);
+	  }
+	  @media screen and (max-width: 600px) {
+		  body{
+			  padding: 0px;
+			  margin: 0px;
+			  background-color: white;
+			  background-image: none;
+			  font-size: smaller;
+		  }
+		  .mnu{
+			  text-align: left;
+			  display: flex;
+		  }
+		  img{
+			  width: 50px;
+		  }
+		  section{
+			  float: left;
+			  display: inline;
+		  }
+		  input{
+			  size: 15;
+		  }
+		  form{
+			  text-align: left;
+		  }
+		  
+	  }
+      header{
+		  float: left;
+		  width: 50px;
+	  }
+	  img{
+		  width: 200px;
+		  /* display: flex; */
+		 /* padding-left: 645px;  */
+	  }
+    form{
+      background-color: rgb(111, 178, 199);
+      padding: 20px 20px 20px 20px;
+      border-radius: 3px;
+    }
+    </style>
+    <script>
+      function registerclk() {
+        alert("Are you sure to register complaint");
+      }
+    </script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <img src="images_student/jssate.png" alt="jss logo">
+      </header>
+      <section>
+        <div style="float: left;">
+          <h1>Welcome <?php $_SESSION['username'] ?></h1>
+        </div>
+      </section>
+      <section>
+        <div class="register-pane">
+            <div>
+                <p style="font-size: 0.9em; padding: 4px; padding-bottom: 5px; border-radius: 3px; background-color: rgb(243, 4, 4); color: white; border-radius: 3px;">REGISTER YOUR COMPLAINT HERE</p>
+            </div>
+            <div>
+                <form action="" method="post">
+                    <div class="iform">
+                    
+                    <div style="padding-top:4px">
+                        <label for="">Abuser USN</label></br>
+                    <input type="abuser_usn" name="abuser_id" placeholder="Enter abuser usn" required size="27"></br>
+                    </div>
+            <br>
+                    <div style="padding-top:5px">
+                        <label for="">Abuse Type</label></br>
+                    <!-- <input type="abuse_type" placeholder="Enter abuse type" size="27"></br> -->
+                    <select name="abuse_type" id="" style="padding-right: 95px;">
+                      <option value="">select type..</option>
+                      <option value="drug abuse">Drug abuse</option>
+                      <option value="discrimination">Discrimination</option>
+                      <option value="emotional abuse">Emotional abuse</option>
+                      <option value="financil abuse">Financial abuse</option>
+                      <option value="harassment">Harassment</option>
+                      <option value="mental abuse">Mental abuse</option>
+                      <option value="physical abuse">Physical abuse</option>
+                      <option value="ragging">Ragging</option>
+                      <option value="sexual abuse">Sexual abuse</option>
+                      <option value="other">Other</option>
+                    </select>
+                    </div>
+            <br>
+                   <input type="submit" value="Register" id="submit" onclick="registerclk()">
+                </div>
+                    
+                </form>
+            </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
