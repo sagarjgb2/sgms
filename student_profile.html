@@ -115,6 +115,11 @@
       border-radius: 3px;
     }
     </style>
+    <script>
+      function registerclk() {
+        alert("Are you sure to register complaint");
+      }
+    </script>
   </head>
   <body>
     <main>
@@ -129,7 +134,7 @@
       <section>
         <div class="register-pane">
             <div>
-                <p style="font-size:larger; padding: 4px; padding-bottom: 5px; border-radius: 3px; background-color: rgb(243, 4, 4); color: white; border-radius: 3px;">Register your complaint here</p>
+                <p style="font-size: 0.9em; padding: 4px; padding-bottom: 5px; border-radius: 3px; background-color: rgb(243, 4, 4); color: white; border-radius: 3px;">REGISTER YOUR COMPLAINT HERE</p>
             </div>
             <div>
                 <form action="" method="post">
@@ -137,7 +142,7 @@
                     
                     <div style="padding-top:4px">
                         <label for="">Abuser USN</label></br>
-                    <input type="abuser_usn" placeholder="Enter abuser usn" size="27"></br>
+                    <input type="abuser_usn" placeholder="Enter abuser usn" required size="27"></br>
                     </div>
             <br>
                     <div style="padding-top:5px">
@@ -157,7 +162,7 @@
                     </select>
                     </div>
             <br>
-                   <input type="submit" value="Register" id="submit">
+                   <input type="submit" value="Register" id="submit" onclick="registerclk()">
                 </div>
                     
                 </form>
