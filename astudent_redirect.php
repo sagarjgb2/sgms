@@ -160,6 +160,14 @@ $conn->close();
 		  }
 		  
 	  }
+      .submitMsg{
+        font-style: italic;
+            color: rgb(143, 221, 25);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size:smaller;
+            font-weight: normal;
+    }
+
 	  
 </style>
 <body>
@@ -169,6 +177,11 @@ $conn->close();
     <section class="mn">
         <div class="para">
             <p><strong>Enter details to add student</strong></p>
+            <?php
+        if($insert == true){
+        echo "<p class='submitMsg'>Student added with usn : $usn</p>";
+        }
+    ?>
         </div>
         <div class="oform">
             <form action="" method="post">

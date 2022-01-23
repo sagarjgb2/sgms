@@ -151,6 +151,14 @@ $conn->close();
 		  }
 		  
 	  }
+      .submitMsg{
+        font-style: italic;
+            color: rgb(143, 221, 25);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size:smaller;
+            font-weight: normal;
+    }
+
 	  
 </style>
 <body>
@@ -165,42 +173,47 @@ $conn->close();
                 <div class="iform">
                 <div style="padding-top:10px; display:block;">
                     <p style="font-size: large;">Enter  details to add Counsellor</p>
+                    <?php
+        if($insert == true){
+        echo "<p class='submitMsg'>Counsellor added with Counsellor ID : $counsellor_id</p>";
+        }
+    ?>
                     <label for="">Counsellor ID</label></br>
-                <input type="counsellor_id" placeholder="Enter student usn" autofocus size="27"></br>
+                <input type="counsellor_id" name="counsellor_id" placeholder="Enter student usn" autofocus size="27"></br>
                 </div>
         
                 <div style="padding-top:15px">
                     <label for="">Name</label></br>
-                <input type="name" placeholder="Enter student name" size="27"></br>
+                <input type="name" name="name" placeholder="Enter student name" size="27"></br>
                 </div>
         
                 <div style="padding-top:15px">
                     <label for="">Gender</label></br>
                 <!-- <input type="gender" placeholder="Enter student gender" size="27"></br> -->
-                <input type="radio" name="genre" value="male" /> Male
-                <input type="radio" name="genre" value="female" />
+                <input type="radio" name="gender" value="male" /> Male
+                <input type="radio" name="gender" value="female" />
  				Female
- 				<input type="radio" name="genre" value="other" />Other
+ 				<input type="radio" name="gender" value="other" />Other
                 </div>
         
                 <div style="padding-top:15px">
                     <label for="">Age</label></br>
-                <input type="age" placeholder="Enter student age" size="27"></br>
+                <input type="age" name="age" placeholder="Enter student age" size="27"></br>
                 </div>
         
                 <div style="padding-top:15px">
                     <label for="">Email</label></br>
-                <input type="email" placeholder="Enter student current year" size="27"></br>
+                <input type="email" name="email" placeholder="Enter student current year" size="27"></br>
                 </div>
             
                 <div style="padding-top:15px">
                     <label for="">Phone number</label></br>
-                <input type="phno" placeholder="Enter student phone number" size="27"></br>
+                <input type="phno" name="phno" placeholder="Enter student phone number" size="27"></br>
                 </div>
         
                 <div style="padding-top:15px">
                     <label for="">Login Password</label></br>
-                <input type="password" placeholder="Enter student password" size="27"></br>
+                <input type="password" name="password" placeholder="Enter student password" size="27"></br>
                 </div>
             </br>
             <input type="submit" value="submit" id="submit">
