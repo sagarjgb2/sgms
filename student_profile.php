@@ -1,30 +1,25 @@
 <?php
 include('connection.php');
-$insert = false;
+$register=false;
 session_start();
 if(isset($_POST['abuser_id'])){
-include('connection.php');
 //collect post variable
 $uname=$_SESSION["username"];
 $abuser_id = $_POST['abuser_id'];
 $abuse_type = $_POST['abuse_type'];
-// $complaint_date = $_POST['complaint_date'];
-$sql = "INSERT INTO `complaint` (`complaint _id`, `usn`, `abuser_id`, `abuse_type`, `complaint_date`) VALUES ('$complaint_id', '$usn', '$abuser_id', '$abuse_type', CURDATE() );";
+$sql = "INSERT INTO `complaint` (`usn`, `abuser_id`, `abuse_type`, `complaint_date`) VALUES ('".$_SESSION['username']."', '$abuser_id', '$abuse_type', CURDATE() );";
 
-
-// Execute the query
+ // Execute the query
  if($conn->query($sql) == true){
-    // echo "Successfully inserted";
+  //echo "Successfully inserted";
 
-    // Flag for successful insertion
-    $insert = true;
+  // Flag for successful insertion
+  $register = true;
 }
 else{
-    echo "ERROR: $sql <br> $conn->error";
+  //echo "ERROR: $sql <br> $conn->error";
+  echo "ERROR noticed";
 }
-
-// Close the database connection
-$conn->close();
 
 }
 ?>
@@ -169,8 +164,19 @@ td{
 }
 
 tr:nth-child(even) {
-  background-color: #b3e5fc;
+  background-color: #e0e0e0;
 }
+a{
+  text-decoration: none;
+}
+ .submitMsg{
+   padding-top: 0px;
+        font-style: italic;
+            color: #33691e;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size:smaller;
+            font-weight: normal;
+    }
     </style>
     <script>
       function registerclk() {
@@ -227,6 +233,9 @@ else{
     
         </div>
       </section>
+        <div style="margin-top: 200px; float: left; margin-left:350px;">
+          <a href="complaint_list.php" style="padding: 12px 12px 12px 12px; background-color:#00bfa5; color: white; border-radius:7px">Complaint List</a>
+        </div>
       <section>
         <div class="register-pane">
             <div>
@@ -234,6 +243,11 @@ else{
             </div>
             <div>
                 <form action="" method="post">
+                <?php
+        if($register == true){
+        echo "<p class='submitMsg'>complaint registered, Thank you.</p>";
+        }
+    ?>
                     <div class="iform">
                     
                     <div style="padding-top:4px">

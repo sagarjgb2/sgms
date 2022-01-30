@@ -6,16 +6,11 @@ if(isset($_POST['username'])){
     $password=$_POST["password"];
 session_start();
 $_SESSION['username']=$_POST['username'];
-    if($username=='admin' && $password=='admin'){
+    if($password=='admin'){
       header('Location: http://' . $_SERVER['HTTP_HOST'] . '/code/gittest/admin.php', true, 303);
       
     }
-    // else if($password=='coun1'){
-    //   header('Location: http://' . $_SERVER['HTTP_HOST'] . '/code/gittest/counsellor_profile.php', true, 303);
-    // }
-    // else if($password=='std1'){
-    //   header('Location: http://' . $_SERVER['HTTP_HOST'] . '/code/gittest/student_profile.php', true, 303);
-    // }
+    
     else{
       $query="select * from student where usn='$uname' and password='$password'";
       $query1="select * from counsellor where counsellor_id='$uname' and password='$password'";

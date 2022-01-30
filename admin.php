@@ -63,6 +63,22 @@ session_start();
 		  /* display: flex; */
 		 /* padding-left: 645px;  */
 	  }
+    table {
+          
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
     </style>
     <div class="mnu">
       <a
@@ -93,6 +109,7 @@ session_start();
         >Logout</a
       >
     </div>
+    
   </head>
   <body>
   <header>
@@ -100,6 +117,52 @@ session_start();
 	</header>
     <section>
       <h1 style="padding-top: 90px;">Welcome Admin !!!!!</h1>
+      <div style="float: left;  padding-top: 20px;">
+        
+        <table>
+        <tr>
+        <th>Student USN</th>
+        <th>Name</th>
+        </tr>
+        
+      <?php
+        $query="SELECT usn, name from student";
+        $result=$conn-> query($query); 
+        if ($result == true) {
+            while ($row = $result-> fetch_assoc()) {
+                echo "<tr><td>". $row["usn"] . "</td><td>" . $row["name"] . "</td></tr>";
+            }
+        
+        echo "</table>";
+    }
+        else{
+            echo "No details available";
+        }
+        ?>
+        
+      </div>
+      <div style="float: left; padding-left:10px; padding-top: 20px;">
+      <table>
+      <tr>
+        <th>Counsellor ID</th>
+        <th>Name</th>
+        </tr>
+        <?php
+        
+        $query1="select counsellor_id, name from counsellor";
+        
+        $result1=$conn-> query($query1);
+        if($result1 == true){
+          while($row = $result1-> fetch_assoc()){
+           echo "<tr><td>". $row["counsellor_id"] . "</td><td>" . $row["name"] . "</td></tr>";  
+          }
+        echo "</table>";
+    }
+        else{
+            echo "No details available";
+        }
+        ?>
+      </div>
     </section>
     <section>
       <div>
