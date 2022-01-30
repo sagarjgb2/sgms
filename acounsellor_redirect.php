@@ -20,7 +20,7 @@ $sql = "INSERT INTO `scms`.`counsellor` (`counsellor_id`, `name`, `gender`, `age
     $insert = true;
 }
 else{
-    echo "ERROR: $sql <br> $conn->error";
+    //echo "ERROR: $sql <br> $conn->error";
 }
 
 // Close the database connection

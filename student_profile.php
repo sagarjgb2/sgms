@@ -61,7 +61,7 @@ $conn->close();
             background-repeat: no-repeat;
         margin: 5px;
         font-family: "Open Sans", sans-serif;
-        background-color: rgb(82, 81, 81);
+        background-color: white;
         color: rgb(15, 4, 77);
       }
         .register-pane{
@@ -147,6 +147,30 @@ $conn->close();
       padding: 20px 20px 20px 20px;
       border-radius: 3px;
     }
+
+    table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th{
+  color: #b71c1c;
+}
+
+td{
+  color: black;
+}
+
+tr:nth-child(even) {
+  background-color: #b3e5fc;
+}
     </style>
     <script>
       function registerclk() {
@@ -161,41 +185,46 @@ $conn->close();
       </header>
       <section>
         <div style="float: left;">
-          <h1 style="padding-top: 60px;">Welcome <?php echo $_SESSION['username']; ?>!! </h1>
-          <!-- <table style="width: 100%;">
-    <tr>
-    <th>NAME</th>
-    <th>AGE</th>
-    <th>YEAR</th>
-    <th>DEPARTMENT</th>
-    <th>PHONE NO.</th>
-  </tr> -->
+          <h1 style="padding-top: 60px;">Hi, <?php echo $_SESSION['username']; ?></h1>
+
   <?php
 $sql2="SELECT name, gender, age, year, department, phno from student where usn='".$_SESSION['username']."'";
 $result1 =$conn-> query($sql2);
 
 if($result1-> num_rows>0){
     while($row = $result1-> fetch_assoc()){
-        // echo "<tr><td>". $row["name"]. "</td><td>". $row["gender"] . "</td><td>" . $row["age"] . "</td><td>" . $row["year"] . "</td><td>" . $row["department"] . "</td><td>" . $row["phno"] . "</td></tr>";
-      echo "NAME:" .$row["name"]; 
-      echo "<br>";
-      echo "GENDER :" .$row['gender']; 
-      echo "<br>";
-      echo "AGE    :" .$row['age']; 
-      echo "<br>";
-      echo "YEAR   :" .$row['year']; 
-      echo "<br>";
-      echo "DEPT   :" .$row['department'];
-      echo "<br>"; 
-      echo "PHNO   :" .$row['phno']; 
+      echo "
+      <table>
+  <tr>
+  <th>NAME</th>
+  <td>".$row["name"]."</td>
+  </tr>
+  <tr>
+  <th>GENDER</th>
+  <td>".$row['gender']."</td>
+  </tr>
+  <tr>
+  <th>AGE</th>
+  <td>".$row['age']."</td>
+  </tr>
+  <th>YEAR</th>
+  <td>".$row['year']."</td>
+  </tr>
+  <th>DEPARTMENT</th>
+  <td>".$row['department']."</td>
+  </tr>
+  <th>PHONE NUMBER</th>
+  <td>".$row['phno']."</td>
+  </tr>
+  
+</table>";
       }
-    echo "</table>";
 }
 else{
     echo "No data found";
 }
   ?>
-    <!-- </table> -->
+    
         </div>
       </section>
       <section>

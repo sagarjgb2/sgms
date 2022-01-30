@@ -1,26 +1,40 @@
 <?php
 include('connection.php');
-
+$login=false;
 if(isset($_POST['username'])){
     $uname=$_POST['username'];
     $password=$_POST["password"];
 session_start();
 $_SESSION['username']=$_POST['username'];
-    if($password=='admin'){
+    if($username=='admin' && $password=='admin'){
       header('Location: http://' . $_SERVER['HTTP_HOST'] . '/code/gittest/admin.php', true, 303);
       
     }
-    else if($password=='coun1'){
-      header('Location: http://' . $_SERVER['HTTP_HOST'] . '/code/gittest/counsellor_profile.php', true, 303);
+    // else if($password=='coun1'){
+    //   header('Location: http://' . $_SERVER['HTTP_HOST'] . '/code/gittest/counsellor_profile.php', true, 303);
+    // }
+    // else if($password=='std1'){
+    //   header('Location: http://' . $_SERVER['HTTP_HOST'] . '/code/gittest/student_profile.php', true, 303);
+    // }
+    else{
+      $query="select * from student where usn='$uname' and password='$password'";
+      $query1="select * from counsellor where counsellor_id='$uname' and password='$password'";
+      $result = mysqli_query($conn, $query);
+      $result1 = mysqli_query($conn, $query1);
+      $count=mysqli_num_rows($result);
+      $count1=mysqli_num_rows($result1);
+      if($count>0){
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/code/gittest/student_profile.php', true, 303);
+      }
+      else if($count1>0){
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/code/gittest/counsellor_profile.php', true, 303);
+      }
+      else{
+        $login=true;
     }
-    else if($password=='std1'){
-      header('Location: http://' . $_SERVER['HTTP_HOST'] . '/code/gittest/student_profile.php', true, 303);
     }
       
-    else{
-        echo "username or password are incorrect";
-        exit();
-    }
+    
 
 }
 ?>
@@ -308,12 +322,20 @@ $_SESSION['username']=$_POST['username'];
         float: left;
         width: 20px;
       }
+      .logmsg{
+        color: red;
+        font-size: small;
+        font-weight: bold;
+        text-align: center;
+        padding-top: 0px;
+        margin-top: 0px;
+      }
     </style>
   </head>
   <body>
     <header>
       <img
-        src="/images_student/jssate.png"
+        src="images_student/jssate.png"
         alt="jss logo"
         style="width: 200px"
       />
@@ -323,6 +345,11 @@ $_SESSION['username']=$_POST['username'];
       <div class="form-container">
         <div class="form-body">
           <form action="" method="post" class="the-form">
+          <?php
+        if($login == true){
+        echo "<p class='logmsg'>username or password incorrect</p>";
+        }
+    ?>
             <div class="fnt">
               <label for="username">Username</label>
             </div>
