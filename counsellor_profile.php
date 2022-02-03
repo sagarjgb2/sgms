@@ -1,6 +1,16 @@
 <?php
 include('connection.php');
 session_start();
+// $pungiven=$_GET['pungiven'];
+//         $query3="select complaint_id from investigation where investigation_id IN (select investigation_id from punishment where punishment_given = '$pungiven');";
+//         // Execute the query
+//         if($conn->query($query3) == true){
+//           //echo "Successfully inserted";
+//         }
+//         else{
+//           echo "ERROR: $query3 <br> $conn->error";
+//           echo "ERROR noticed";
+//         }
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +31,15 @@ session_start();
         >Home</a
       >
       <a
+        href="acCmpList.php"
+        style="
+          text-decoration: none;
+          padding: 12px 12px 12px 12px;
+          color: rgb(15, 4, 77);
+        "
+        >Complaint List</a
+      >
+      <a
         href="login.php"
         style="
           text-decoration: none;
@@ -32,6 +51,7 @@ session_start();
     </div>
 
     <style>
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans);
       .mnu {
         text-decoration: none;
         text-align: right;
@@ -93,6 +113,56 @@ td{
 tr:nth-child(even) {
   background-color: #e0e0e0;
 }
+
+body{
+  background: #f2f2f2;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 55%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 53%;
+  left: 18.7%;
+  transform: translate(-50%, -50%);
+}
+a{
+  text-decoration: none;
+}
     </style>
   </head>
   <body>
@@ -139,8 +209,53 @@ else{
     echo "No data found";
 }
   ?>
-     </div>
+     
       </section>
+      <div class="search-pun">
+       <form action="" method="get">
+       <div class="wrap">
+   <div class="search">
+      <input type="text" class="searchTerm" name="pungiven" placeholder="Enter Punishment type">
+      <button type="submit" class="searchButton">
+        <i class="fa fa-search"></i>
+     </button>
+   </div>
+</div>
+       </form>
+     </div>
+
+     <div style="float: right; width: 5%; padding-left:400px; padding-top:0px; display:flex;">
+     <table>
+    <tr><th colspan="5" style="text-align: center;">COMPLAINTS ASSIGNED </th></tr>
+    <tr>
+      <th>INVESTIGATION_ID</th>
+    <th>COMPLAINT_ID</th>
+    <th>STATUS</th>
+    <th>PRIORITY</th>
+    <th>DELETE</th>
+    <?php
+$sql="SELECT * from `scms`.`investigation` where counsellor_id='".$_SESSION['username']."'";
+$result=$conn-> query($sql);
+
+if($result == true){
+    while($row = $result-> fetch_assoc()){
+        echo '<tr>';
+        $del=$row['investigation_id'];
+        echo '<td>'.$row['investigation_id'] .'</td>';
+        echo '<td>'.$row['complaint_id'] .'</td>';
+        echo '<td>'.$row['status'] .'</td>';
+        echo '<td>'.$row['priority'] .'</td>';
+        echo "<td><a href='delete.php?del=$del'<button type='button' class='btn btn-success'>Delete</button></td>";
+        echo '</tr>';
+        
+    }
+    echo "</table>";
+}
+else{
+    echo "No complaints assigned.";
+}
+ ?> 
+     </div>
     </main>
   </body>
 </html>
