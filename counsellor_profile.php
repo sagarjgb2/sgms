@@ -11,6 +11,10 @@ session_start();
 //           echo "ERROR: $query3 <br> $conn->error";
 //           echo "ERROR noticed";
 //         }
+$atype=$_SESSION["abuse_type"];
+// echo "$atype";
+$sql5="CALL `getPriority`('$atype');";
+$res=mysqli_query($conn,$sql5);
 ?>
 
 <!DOCTYPE html>

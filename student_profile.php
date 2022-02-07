@@ -5,6 +5,7 @@ session_start();
 if(isset($_POST['abuser_id'])){
 //collect post variable
 $uname=$_SESSION["username"];
+$_SESSION['abuse_type']=$_POST['abuse_type'];
 $abuser_id = $_POST['abuser_id'];
 $abuse_type = $_POST['abuse_type'];
 $sql = "INSERT INTO `complaint` (`usn`, `abuser_id`, `abuse_type`, `complaint_date`) VALUES ('".$_SESSION['username']."', '$abuser_id', '$abuse_type', CURDATE() );";
@@ -263,7 +264,7 @@ else{
                       <option value="drug abuse">Drug abuse</option>
                       <option value="discrimination">Discrimination</option>
                       <option value="emotional abuse">Emotional abuse</option>
-                      <option value="financil abuse">Financial abuse</option>
+                      <option value="financial abuse">Financial abuse</option>
                       <option value="harassment">Harassment</option>
                       <option value="mental abuse">Mental abuse</option>
                       <option value="physical abuse">Physical abuse</option>

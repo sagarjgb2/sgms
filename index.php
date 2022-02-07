@@ -59,7 +59,7 @@
       h1 {
         text-align: center;
         font-weight: bolder;
-        font-size: 29px;
+        font-size: 33px;
       }
       dt {
         text-align: left;
@@ -126,9 +126,9 @@
         </div>
         <div>
           <dl>
-            <dt>Hello students ,</dt>
+            <dt style="font-size: large;">Hello students ,</dt>
             <dd>
-              <p>
+              <p style="font-size: large;">
                 "
                 <strong
                   >JSSATEB Student Grievance Management System (SGMS)</strong
