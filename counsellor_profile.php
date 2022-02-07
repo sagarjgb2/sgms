@@ -1,16 +1,22 @@
 <?php
 include('connection.php');
 session_start();
-// $pungiven=$_GET['pungiven'];
-//         $query3="select complaint_id from investigation where investigation_id IN (select investigation_id from punishment where punishment_given = '$pungiven');";
-//         // Execute the query
-//         if($conn->query($query3) == true){
-//           //echo "Successfully inserted";
-//         }
-//         else{
-//           echo "ERROR: $query3 <br> $conn->error";
-//           echo "ERROR noticed";
-//         }
+
+        // Execute the query
+        if(isset($_POST['pun'])){
+          $pg=$_POST['pg'];
+        //echo "$pg";
+        $query3="select complaint_id from investigation where investigation_id IN (select investigation_id from punishment where punishment_given = '$pg');";
+        $result3=$conn-> query($query3);
+          if($conn->query($query3) == true){
+            //echo "Successfully inserted";
+          }
+          else{
+           // echo "ERROR: $query3 <br> $conn->error";
+            echo "ERROR noticed";
+          }
+        }
+        
 $atype=$_SESSION["abuse_type"];
 // echo "$atype";
 $sql5="CALL `getPriority`('$atype');";
@@ -91,8 +97,7 @@ $res=mysqli_query($conn,$sql5);
 	  }
 	  img{
 		  width: 200px;
-		  /* display: flex; */
-		 /* padding-left: 645px;  */
+		  
 	  }
       table {
   font-family: arial, sans-serif;
@@ -122,47 +127,15 @@ body{
   background: #f2f2f2;
   font-family: 'Open Sans', sans-serif;
 }
-
-.search {
-  width: 100%;
-  position: relative;
-  display: flex;
-}
-
-.searchTerm {
-  width: 55%;
-  border: 3px solid #00B4CC;
-  border-right: none;
-  padding: 5px;
-  height: 20px;
-  border-radius: 5px 0 0 5px;
-  outline: none;
-  color: #9DBFAF;
-}
-
-.searchTerm:focus{
-  color: #00B4CC;
-}
-
-.searchButton {
-  width: 40px;
-  height: 36px;
-  border: 1px solid #00B4CC;
-  background: #00B4CC;
-  text-align: center;
-  color: #fff;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  font-size: 20px;
-}
-
-/*Resize the wrap to see the search bar change!*/
-.wrap{
-  width: 30%;
-  position: absolute;
-  top: 53%;
-  left: 18.7%;
-  transform: translate(-50%, -50%);
+.search-pun{
+  margin-top: 350px;
+  
+  padding-top: 0px;
+  /* background-color: yellow; */
+  width: 20%;
+  padding-left: 48px;
+  
+  
 }
 a{
   text-decoration: none;
@@ -215,18 +188,7 @@ else{
   ?>
      
       </section>
-      <div class="search-pun">
-       <form action="" method="get">
-       <div class="wrap">
-   <div class="search">
-      <input type="text" class="searchTerm" name="pungiven" placeholder="Enter Punishment type">
-      <button type="submit" class="searchButton">
-        <i class="fa fa-search"></i>
-     </button>
-   </div>
-</div>
-       </form>
-     </div>
+     
 
      <div style="float: right; width: 5%; padding-left:400px; padding-top:0px; display:flex;">
      <table>
@@ -261,5 +223,45 @@ else{
  ?> 
      </div>
     </main>
+ 
+
+    <div class="search-pun">
+       <form action="" method="post">
+         <div>
+          <input type="text" name="pg" placeholder="Enter punishment given">
+          <input type="submit" name="pun" value="Check">
+         </div>
+         <div>
+           <table>
+<tr>
+  <th>PID</th> 
+</tr>
+  <?php 
+  if($result3 == true){
+    while($row = $result3-> fetch_assoc()){
+        echo '<tr>';
+        echo '<td>'.$row['complaint_id'] .'</td>';
+        echo '</tr>';
+        
+    }
+    echo "</table>";
+}
+else{
+    echo "No pid available for this punishment type!!";
+}
+           ?>
+         </div>
+       </form>
+     </div>
+     
+   
+     
+
+
+
+
+
+
+
   </body>
 </html>
